@@ -8,15 +8,15 @@ function App() {
     </div>
   );
 }
-function loaded() {
+
+setTimeout(function(){
   const canvas =  document.getElementById('game') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d');
-  
-  function clearScreen(){
+
+
     ctx!.fillStyle = 'green';
     ctx?.fillRect(0,0,canvas.width,canvas.height);
-}
-}
+}, 1);
 
   
   let speed = 7;
