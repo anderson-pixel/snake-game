@@ -13,6 +13,8 @@ setTimeout(function(){
   const canvas =  document.getElementById('game') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d');
 
+  let speed = 7;
+
   let headX = 10;
   let headY = 10;
 
@@ -21,6 +23,18 @@ setTimeout(function(){
 
   let xVelocity = 0;
   let yVelocity = 0;
+
+  let appleX = 5;
+  let appleY = 5;
+
+  function drawGame(){
+    clearScreen();
+    changeSnakePosition();
+    drawSnake();
+    drawApple();
+    setTimeout(drawGame, 1000/ speed)
+}
+
 
     function clearScreen(){
       ctx!.fillStyle = 'black';
@@ -37,28 +51,41 @@ setTimeout(function(){
       headY = headY + yVelocity;
     }
 
-    let speed = 7;
-
-  
-  function drawGame(){
-      clearScreen();
-      changeSnakePosition();
-      drawSnake();
-      setTimeout(drawGame, 1000/ speed)
-  }
+    function drawApple(){
+      ctx!.fillStyle = "red";
+      ctx!.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
+    }
 
   document.addEventListener('keydown', keyDown);
 
   function keyDown(event: any){
 
     if(event.keyCode === 38){
+      if(yVelocity === 1)
+      return;
       yVelocity = -1;
       xVelocity = 0;
     }
 
     if(event.keyCode === 40){
+      if(yVelocity === -1)
+      return;
       yVelocity = 1;
       xVelocity = 0;
+    }
+
+    if(event.keyCode === 37){
+      if(xVelocity === 1)
+      return;
+      yVelocity = 0;
+      xVelocity = -1;
+    }
+
+    if(event.keyCode === 39){
+      if(xVelocity === -1)
+      return;
+      yVelocity = 0;
+      xVelocity = 1;
     }
   }
 
