@@ -13,19 +13,58 @@ setTimeout(function(){
   const canvas =  document.getElementById('game') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d');
 
+  let headX = 10;
+  let headY = 10;
 
-    ctx!.fillStyle = 'green';
+  let tileCount = 20;
+  let tileSize = canvas.width / tileCount - 2;
+
+  let xVelocity = 0;
+  let yVelocity = 0;
+
+    function clearScreen(){
+      ctx!.fillStyle = 'black';
     ctx?.fillRect(0,0,canvas.width,canvas.height);
-}, 1);
+    }
 
-  
-  let speed = 7;
+    function drawSnake(){
+    ctx!.fillStyle = 'limegreen'
+    ctx!.fillRect(headX * tileCount, headY* tileCount, tileSize,tileSize);
+    }
+
+    function changeSnakePosition(){
+      headX = headX + xVelocity;
+      headY = headY + yVelocity;
+    }
+
+    let speed = 7;
+
   
   function drawGame(){
-      console.log('drawgame')
+      clearScreen();
+      changeSnakePosition();
+      drawSnake();
       setTimeout(drawGame, 1000/ speed)
   }
-  
-drawGame();
+
+  document.addEventListener('keydown', keyDown);
+
+  function keyDown(event: any){
+
+    if(event.keyCode === 38){
+      yVelocity = -1;
+      xVelocity = 0;
+    }
+
+    if(event.keyCode === 40){
+      yVelocity = 1;
+      xVelocity = 0;
+    }
+  }
+
+  drawGame();
+
+}, 1);
 
 export default App;
+
