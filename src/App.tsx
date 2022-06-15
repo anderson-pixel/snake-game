@@ -2,11 +2,14 @@ import React from 'react';
 
 function App() {
   return (
+    <>
     <div className="App">
-    <h1 className="">Snake Game</h1>
-    <button onClick={() => window.location.reload()}>Restart</button> .
     <canvas id='game' width='400' height='400'></canvas>
     </div>
+    <h1 className="">Snake Game</h1>
+    <p>W A S D / Arrow Keys for Movement</p>
+    <button onClick={() => window.location.reload()}>Restart</button>
+    </>
   );
 }
 
@@ -125,8 +128,8 @@ setTimeout(function(){
 
     function drawScore() {
     ctx!.fillStyle = "white";
-    ctx!.font = "10px Verdana";
-    ctx!.fillText("Score " + score, canvas.width - 50, 10);
+    ctx!.font = "14px Roboto";
+    ctx!.fillText("Score: " + score, canvas.width - 70, 30);
     }
 
 
