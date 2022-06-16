@@ -4,7 +4,7 @@ function App() {
   return (
     <>
     <div className="App">
-    <canvas id='game' width='400' height='400'></canvas>
+    <canvas id='game' width='440' height='440'></canvas>
     </div>
     <h1 className="">Snake Game</h1>
     <p>W A S D / Arrow Keys for Movement</p>
@@ -31,7 +31,7 @@ setTimeout(function(){
   let headX = 10;
   let headY = 10;
 
-  let tileCount = 20;
+  let tileCount = 21;
   let tileSize = canvas.width / tileCount - 2;
 
   let xVelocity = 0;
